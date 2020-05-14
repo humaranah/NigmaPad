@@ -28,8 +28,13 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: Install npm
-        run: npm i
+      - name: Install npm and Angular CLI
+        run: |
+          npm i
+          npm install @angular/cli
 
       - name: Run build
-        run: npm run build:prod
+        run: ng build --prod
+
+      - name: Run unit tests
+        run: ng test
